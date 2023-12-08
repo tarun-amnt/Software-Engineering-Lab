@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def quadratic_solution(a, b, c):
+    discriminant = b**2 - 4*a*c
+    if discriminant < 0:
+        return None
+    elif discriminant == 0:
+        root = -b / (2*a)
+        return [root]
+    else:
+        root1 = (-b + np.sqrt(discriminant)) / (2*a)
+        root2 = (-b - np.sqrt(discriminant)) / (2*a)
+        return [root1, root2]
+
+def plot_quadratic(a, b, c, roots=None):
+    x = np.linspace(-10, 10, 100)
+    y = a*x**2 + b*x + c
+
+    plt.plot(x, y, label=f'{a}x^2 + {b}x + {c}')
+    
+    if roots:
+        plt.scatter(roots, [0, 0], color='red', marker='o', label='Roots')
+
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Quadratic Equation')
+    plt.legend()
+    plt.show()
+
+# Hard-coded variables
+a_hardcoded, b_hardcoded, c_hardcoded = 1, -3, 2
+roots_hardcoded = quadratic_solution(a_hardcoded, b_hardcoded, c_hardcoded)
+plot_quadratic(a_hardcoded, b_hardcoded, c_hardcoded, roots_hardcoded)
