@@ -29,6 +29,6 @@ def plot_quadratic(a, b, c, roots=None):
     plt.show()
 
 # Hard-coded variables
-a_hardcoded, b_hardcoded, c_hardcoded = 1, -3, 2
+a_hardcoded, b_hardcoded, c_hardcoded = 4, -7, 3
 roots_hardcoded = quadratic_solution(a_hardcoded, b_hardcoded, c_hardcoded)
 plot_quadratic(a_hardcoded, b_hardcoded, c_hardcoded, roots_hardcoded)
