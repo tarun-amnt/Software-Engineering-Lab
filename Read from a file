@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def quadratic_solution(a, b, c):
+    discriminant = b**2 - 4*a*c
+    if discriminant < 0:
+        return None
+    elif discriminant == 0:
+        root = -b / (2*a)
+        return [root]
+    else:
+        root1 = (-b + np.sqrt(discriminant)) / (2*a)
+        root2 = (-b - np.sqrt(discriminant)) / (2*a)
+        return [root1, root2]
+
+def plot_quadratic(a, b, c, roots=None):
+    x = np.linspace(-10, 10, 100)
+    y = a*x**2 + b*x + c
+
+    plt.plot(x, y, label=f'{a}x^2 + {b}x + {c}')
+    
+    if roots:
+        plt.scatter(roots, [0, 0], color='red', marker='o', label='Roots')
+
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Quadratic Equation')
+    plt.legend()
+    plt.show()
+
+# Read from a file
+with open('quadratic_coefficients.txt', 'r') as file:
+    a_file, b_file, c_file = map(float, file.readline().split())
+roots_file = quadratic_solution(a_file, b_file, c_file)
+plot_quadratic(a_file, b_file, c_file, roots_file)
